@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -31,58 +32,57 @@ class BookController extends Controller
         $validatedData = $request->validate([
             'title'  => 'required|string|max:255',
             'author'   => 'required|string|max:255',
-            'genre' => 'nullable|string',
+            'genres' => 'nullable|string',
             'pages' => 'required|integer|min:1',
         ]);
     
-        // Criando o registro no banco
+        $validatedData['user_id'] = Auth::id();
+
         $book = Book::create($validatedData);
             return redirect()->intended('/browse_books');
-        // Retornando resposta de sucesso
-        // return response()->json([
-        //     'message' => 'Livro cadastrado com sucesso!',
-        //     'data' => $book
-        // ], 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show()
     {
-        return view ('browse_books', [
-            'books' => Book::all()
+        $books = Book::where('user_id', Auth::id())->get();
+        return view('browse_books', compact('books'));
+    }
+
+    public function edit($id)
+    {
+        $book = Book::findOrFail($id);
+        return view('edit_book', compact('book'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'genres' => 'required|string|max:255',
+            'pages' => 'required|integer|min:1',
         ]);
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Book $book)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Book $book)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
-    {
-        // Encontrar o livro pelo ID
         $book = Book::findOrFail($id);
 
-        // Deletar o livro
-        $book->delete();
 
-        // Redirecionar para a lista de livros com uma mensagem de sucesso
+        $book->update([
+            'title' => $request->title,
+            'author' => $request->author,
+            'genres' => $request->genres,
+            'pages' => $request->pages,
+        ]);
+
+        return redirect()->route('browse_books')->with('success', 'Livro atualizado com sucesso!');
+    }
+
+    public function destroy($id)
+    {
+
+        $book = Book::findOrFail($id);
+        $book->delete();
         return redirect()->route('browse_books');
     }
 }
