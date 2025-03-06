@@ -17,29 +17,30 @@ class AuthController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
+            'cpf' => 'required|cpf',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|confirmed|min:6',
         ]);
 
         $user = User::create([
             'name' => $validatedData['name'],
+            'cpf' => $validatedData['cpf'],
             'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
         ]);
         
         Auth::login($user);
-
-        return redirect()->route('dashboard');
+        return redirect()->route('browse_books');
     }
 
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
+            'cpf' => 'required|cpf',
             'password' => 'required',
         ]);
-        if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->intended('/dashboard');
+        if (Auth::attempt($request->only('cpf', 'password'))) {
+            return redirect()->intended('/browse_books');
         }
 
         throw ValidationException::withMessages([
