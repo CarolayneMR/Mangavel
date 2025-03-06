@@ -27,5 +27,6 @@ Route::get('/create_book', function () {
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::get('/browse_books/', [BookController::class, 'show']);
+Route::get('/browse_books/', [BookController::class, 'show'])->name('browse_books');;
 Route::post('/books', [BookController::class, 'store'])->name('books.store');
+Route::delete('/books/{book}', [BookController::class, 'destroy'])->name('books.destroy');
