@@ -28,7 +28,21 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title'  => 'required|string|max:255',
+            'author'   => 'required|string|max:255',
+            'genre' => 'nullable|string',
+            'pages' => 'required|integer|min:1',
+        ]);
+    
+        // Criando o registro no banco
+        $book = Book::create($validatedData);
+            return redirect()->intended('/browse_books');
+        // Retornando resposta de sucesso
+        // return response()->json([
+        //     'message' => 'Livro cadastrado com sucesso!',
+        //     'data' => $book
+        // ], 201);
     }
 
     /**
