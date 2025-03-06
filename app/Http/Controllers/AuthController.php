@@ -39,10 +39,6 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
         if (Auth::attempt($request->only('email', 'password'))) {
-            return response()->json([
-                'user' => Auth::user(),
-                'message' => 'Successfully logged in',
-            ]);
             return redirect()->intended('/dashboard');
         }
 
@@ -50,6 +46,7 @@ class AuthController extends Controller
             'email' => ['The provided credentials are incorrect.'],
         ]);
     }
+
     public function logout()
     {
         Auth::logout();
