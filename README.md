@@ -1,66 +1,19 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1 align="center">🥭 Mangavel 🥭</h1>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Descrição
+Um CRUD desafiador de livros, foi feito com o intuito de estudar, testar e aprender sobre tecnologia como Docker, Laravel e MongoDB como banco de dados.
 
-## About Laravel
+### Como foi iniciado o projeto?
+- Primeiramente, seguimos o tutorial disponibilizado pelo nosso professor: [Criando e executando um projeto Laravel 12 com (quase) zero dependências usando Docker](https://dev.to/ranierivalenca/criando-e-executando-um-projeto-laravel-12-com-quase-zero-dependencias-usando-docker-hgd). <br>
+- Em seguida, utilizamos a documentação oficial do MongoDB como referência para a configuração inicial do projeto, assim como a criação de alguns comando que estão encontrados no Makefile: [Download and Install](https://www.mongodb.com/pt-br/docs/drivers/php/laravel-mongodb/current/quick-start/download-and-install/)
+- Após concluir essa etapa e garantir que a aplicação estivesse funcionando, finalmente iniciamos o CRUD, com isso aproveitamos a documentação oficial do Mongodb: [Autentificação de usúarios](https://www.mongodb.com/pt-br/docs/drivers/php/laravel-mongodb/current/user-authentication/)
+- Seguindo o tutorial e o aprendizado que temos, finalizamos o CRUD, porém faltou um dos requisitos de fazer cadastro e login por CPF, para pesquisamos por uma biblioteca <b>atualizada</b> e encontromos a: [pt-br validator](https://github.com/LaravelLegends/pt-br-validator)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Desenvolvedores
+* [Carolayne Maria Russel](https://github.com/CarolayneMR)
+* [Eduardo Silvino](https://github.com/Dudu200313)
+* [Ian Elton](https://github.com/ianq1w1)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Agradecimentos especiais
+* [Adryan Nascimento](https://github.com/Nasc1mento)  (Pela ajuda em geral e o Makefile)
+* [Ranieri Valença](https://github.com/ranierivalenca) (Pelo Dockerfile original)
