@@ -6,8 +6,8 @@ services:
     build:
       context: .
       dockerfile: ./php-docker/Dockerfile-php
-    network:
-      - "rede_mango"
+    networks:
+      - rede_mango
     volumes:
       - .:/app
     ports:
@@ -20,8 +20,15 @@ services:
   db:
     image: mongo
     container_name: mongodb
-    network:
-      - "rede_mango"
+    networks:
+      - rede_mango
+    volumes: 
+      - /mangavel:/data/db
     ports: 
       - "27017:27017"
 
+networks: 
+  rede_mango:
+  
+volumes: 
+  mangavel:
