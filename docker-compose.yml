@@ -1,0 +1,27 @@
+services:
+ 
+   # Application Service
+  app:
+    container_name: mangavel-app
+    build:
+      context: .
+      dockerfile: ./php-docker/Dockerfile-php
+    network:
+      - "rede_mango"
+    volumes:
+      - .:/app
+    ports:
+      - "5173:5173"
+      - "8000:8000"
+    working_dir: /app
+    depends_on:
+      - db
+  #database
+  db:
+    image: mongo
+    container_name: mongodb
+    network:
+      - "rede_mango"
+    ports: 
+      - "27017:27017"
+
