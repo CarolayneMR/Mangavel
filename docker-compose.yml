@@ -5,18 +5,12 @@ services:
     container_name: mangavel-app
     build:
       context: .
-      dockerfile: ./php-docker/Dockerfile-php
     networks:
       - rede_mango
-    volumes:
-      - .:/app
     ports:
       - "5173:5173"
       - "8000:8000"
-    working_dir: /app
-    depends_on:
-      - db
-  #database
+  #databasez
   db:
     image: mongo
     container_name: mongodb
