@@ -15,17 +15,17 @@ setup:
 	docker network create rede_mango && \
 	docker run -d -p 27017:27017 --name mongodb --network rede_mango mongo
 
-install:
-	docker run -it --rm   -p 8000:8000 -p 5173:5173 --network rede_mango -v ./:/app -w /app ranierivalenca/laravel12:with-mongodb sh -c "npm install && composer install"
+#install:
+##docker run -it --rm   -p 8000:8000 -p 5173:5173 --network rede_mango -v ./:/app -w /app ranierivalenca/laravel12:with-mongodb sh -c "npm install && composer install"
 
-#Irá gerar a key do laravel
-key:
-	docker run -it --rm   -p 8000:8000 -p 5173:5173 --network rede_mango -v ./:/app -w /app ranierivalenca/laravel12:with-mongodb php artisan key:generate
+##Irá gerar a key do laravel
+#key:
+##docker run -it --rm   -p 8000:8000 -p 5173:5173 --network rede_mango -v ./:/app -w /app ranierivalenca/laravel12:with-mongodb php artisan key:generate
 
-migrate:
-	docker run -it --rm   -p 8000:8000 -p 5173:5173 --network rede_mango -v ./:/app -w /app ranierivalenca/laravel12:with-mongodb php artisan migrate
+#migrate:
+##docker run -it --rm   -p 8000:8000 -p 5173:5173 --network rede_mango -v ./:/app -w /app ranierivalenca/laravel12:with-mongodb php artisan migrate
 
-#Comando usando para rodar o projeto no container
-run: 
-	docker run -it --rm   -p 8000:8000 -p 5173:5173 --network rede_mango -v ./:/app -w /app ranierivalenca/laravel12:with-mongodb composer run dev -vv
+##Comando usando para rodar o projeto no container
+#run: 
+##docker run -it --rm   -p 8000:8000 -p 5173:5173 --network rede_mango -v ./:/app -w /app ranierivalenca/laravel12:with-mongodb composer run dev -vv
 

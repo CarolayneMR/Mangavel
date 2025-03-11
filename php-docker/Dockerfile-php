@@ -1,5 +1,18 @@
 FROM php:latest
 
+
+# Exponha a porta 8000 para o PHP
+EXPOSE 8000
+
+#Exponhe a porta do VITE < front
+EXPOSE 5173
+
+# Defina o diretório de trabalho no container
+WORKDIR /app
+
+# Copie os arquivos da aplicação Laravel para o container
+COPY . .
+
 # Instalar unzip
 RUN apt update && apt install -y unzip
 
@@ -23,31 +36,19 @@ RUN curl -fsSL https://bun.sh/install | bash
 RUN ln -s $(which bun) /usr/local/bin/npm
 RUN ln -s $(which bunx) /usr/local/bin/npx
 
-# Exponha a porta 8000 para o PHP
-EXPOSE 8000
-
-#Exponhe a porta do VITE < front
-EXPOSE 5173
-
-# Defina o diretório de trabalho no container
-WORKDIR /app
-
-# Copie os arquivos da aplicação Laravel para o container
-COPY . .
+RUN bash -c "source /root/.bashrc"
 
 #daí o note de ian é mt ruim tem que rodar isso aqui:
-RUN composer config --global process-timeout 30000
+#RUN composer config --global process-timeout 30000
 
-# Instale as dependências do Laravel via Composer
-RUN composer install --no-dev --optimize-autoloader
+# Instalar dependências corretamente
+RUN bun install --dev
 
+RUN npm install  concurrently
 
+# Permissões para Node Modules
+RUN chmod -R 777 /app/node_modules
 
-#gerando a chave 
-RUN php artisan key:generate
-
-#migrations
-RUN php artisan migrate 
 
 # Padrãozinho para rodar
-CMD ["composer" , "run" , "dev"]
+CMD composer install 

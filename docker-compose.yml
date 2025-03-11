@@ -23,7 +23,7 @@ services:
     networks:
       - rede_mango
     volumes: 
-      - /mangavel:/data/db
+      - mangavel:/data/db
     ports: 
       - "27017:27017"
 
