@@ -29,7 +29,8 @@ FROM laravel12
 WORKDIR /app
 COPY . /app
 RUN composer install 
-RUN npm install 
+RUN npm install
+RUN php artisan key:generate 
 EXPOSE 8000
 EXPOSE 5173
 CMD ["composer", "run", "dev" ]
