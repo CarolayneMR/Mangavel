@@ -48,9 +48,14 @@ class AuthController extends Controller
         ]);
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        Auth::logout();
-        return response()->json(['message' => 'Successfully logged out']);
+        Auth::logout(); // Desloga o usuário
+
+        // Invalida a sessão e regenera o token CSRF para segurança
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with('success', 'Logout realizado com sucesso.');
     }
 } 

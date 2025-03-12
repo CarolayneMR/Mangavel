@@ -14,7 +14,7 @@
         {{ session('success') }}
     </div>
     @endif
-
+ 
     <div class="row">
         @forelse ($books as $book)
         <div class="col-md-4 mb-4">
@@ -49,6 +49,13 @@
             📖 Cadastrar Novo Livro
         </a>
     </div>
-
+   
+<div class="d-flex justify-content-center mt-4"> 
+    <form method="POST" action="{{ route('logout') }}">
+    @csrf
+    <button type="submit"  class="btn btn-primary btn-lg">Sair</button>
+    </form>
+</div>
+   
 </body>
 </html>
