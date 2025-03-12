@@ -4,39 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Browse Books</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="container mt-5">
-    <h2>Books</h2>
+<body class="container mx-auto mt-5">
+
+    <!-- Navbar -->
+    <nav class="bg-blue-600 text-white mb-4 p-4">
+        <div class="flex justify-between items-center">
+            <span class="font-bold text-lg">Mangavel</span>
+            <span class="text-lg">
+                @if (Auth::check())
+                    {{ Auth::user()->name }}
+                @endif
+            </span>
+        </div>
+    </nav>
+
+    <h2 class="text-2xl font-semibold mb-4">Books</h2>
 
     @if (session('success'))
-    <div class="alert alert-success mt-3">
+    <div class="bg-green-500 text-white p-3 mb-4 rounded">
         {{ session('success') }}
     </div>
     @endif
- 
-    <div class="row">
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         @forelse ($books as $book)
-        <div class="col-md-4 mb-4">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $book->title }}</h5>
-                    <p class="card-text">
-                        <strong>Author:</strong> {{ $book->author }} <br> 
-                        <strong>Genres:</strong> {{ $book->genres }} <br>
-                        <strong>Pages:</strong> {{ $book->pages }}
-                    </p>
+        <div class="bg-white p-4 rounded shadow-md">
+            <h5 class="text-xl font-semibold">{{ $book->title }}</h5>
+            <p>
+                <strong>Author:</strong> {{ $book->author }} <br>
+                <strong>Genres:</strong> {{ $book->genres }} <br>
+                <strong>Pages:</strong> {{ $book->pages }}
+            </p>
 
-                    <div class="d-flex justify-content-start mt-3">
-                        <a href="{{ route('books.edit', $book->id) }}" class="btn btn-warning btn-sm me-2">✏️ Edit</a>
+            <div class="flex space-x-2 mt-4">
+                <a href="{{ route('books.edit', $book->id) }}" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">✏️ Edit</a>
 
-                        <form action="{{ route('books.destroy', $book->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">🗑️ Delete</button>
-                        </form>
-                    </div>
-                </div>
+                <form action="{{ route('books.destroy', $book->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">🗑️ Delete</button>
+                </form>
             </div>
         </div>
         @empty
@@ -44,18 +53,20 @@
         @endforelse
     </div>
 
-    <div class="d-flex justify-content-center mt-4">
-        <a href="{{ route('create_book') }}" class="btn btn-primary btn-lg">
+    <div class="flex justify-center mt-8">
+        <a href="{{ route('create_book') }}" class="bg-blue-600 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-700">
             📖 Cadastrar Novo Livro
         </a>
     </div>
-   
-<div class="d-flex justify-content-center mt-4"> 
-    <form method="POST" action="{{ route('logout') }}">
-    @csrf
-    <button type="submit"  class="btn btn-primary btn-lg">Sair</button>
-    </form>
-</div>
+
+    <div class="flex justify-center mt-4"> 
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-700">
+                Sair
+            </button>
+        </form>
+    </div>
    
 </body>
 </html>
