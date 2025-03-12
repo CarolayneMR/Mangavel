@@ -22,28 +22,28 @@
             @method('PUT')
 
             <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
+                <label for="title" class="form-label">Título</label>
                 <input type="text" class="form-control form-control w-100" id="title" name="title" value="{{ old('title', $book->title) }}" required>
             </div>
 
             <div class="mb-3">
-                <label for="author" class="form-label">Author</label>
+                <label for="author" class="form-label">Autor</label>
                 <input type="text" class="form-control form-control w-100" id="author" name="author" value="{{ old('author', $book->author) }}" required>
             </div>
 
             <div class="mb-3">
-                <label for="genres" class="form-label">Genres</label>
+                <label for="genres" class="form-label">Gênero</label>
                 <input type="text" class="form-control form-control w-100" id="genres" name="genres" value="{{ old('genres', $book->genres) }}" required>
             </div>
 
             <div class="mb-3">
-                <label for="pages" class="form-label">Pages</label>
+                <label for="pages" class="form-label">Páginas</label>
                 <input type="number" class="form-control form-control w-100" id="pages" name="pages" value="{{ old('pages', $book->pages) }}" required>
             </div>
 
             <div class="d-flex justify-content-between">
-                <button type="submit" class="btn btn-primary">Update Book</button>
-                <a href="{{ route('browse_books') }}" class="btn btn-secondary">Back to Book List</a>
+                <button type="submit" class="btn btn-primary">Salvar atualização</button>
+                <a href="{{ route('browse_books') }}" class="btn btn-secondary">Voltar à lista de livros</a>
             </div>
         </form>
     </div>

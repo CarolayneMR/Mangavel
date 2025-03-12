@@ -23,26 +23,26 @@
         @csrf
 
         <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
+            <label for="title" class="form-label">Título</label>
             <input type="text" id="title" name="title" class="form-control" required>
         </div>
 
         <div class="mb-3">
-            <label for="author" class="form-label">Author</label>
+            <label for="author" class="form-label">Autor</label>
             <input type="text" id="author" name="author" class="form-control" required>
         </div>
 
         <div class="mb-3">
-            <label for="genres" class="form-label">Genres</label>
+            <label for="genres" class="form-label">Gênero</label>
             <input type="text" id="genres" name="genres" class="form-control">
         </div>
 
         <div class="mb-3">
-            <label for="pages" class="form-label">Number of Pags</label>
+            <label for="pages" class="form-label">Número de Páginas</label>
             <input type="number" id="pages" name="pages" class="form-control" required min="1">
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit!</button>
+        <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 </body>
 </html>
